@@ -255,7 +255,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                           ),
                         ),
                         Text(
-                          'Profile',
+                          'Logout',
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ],
