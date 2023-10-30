@@ -79,13 +79,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -96,33 +96,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'homePage',
               path: 'homePage',
               requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'homePage')
-                  : HomePageWidget(),
+              builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
               name: 'courses',
               path: 'courses',
               requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'courses')
-                  : CoursesWidget(),
+              builder: (context, params) => CoursesWidget(),
             ),
             FFRoute(
               name: 'profilePage',
               path: 'profilePage',
               requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'profilePage')
-                  : ProfilePageWidget(),
+              builder: (context, params) => ProfilePageWidget(),
             ),
             FFRoute(
               name: 'testDataTablePage',
               path: 'testDataTablePage',
               requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'testDataTablePage')
-                  : TestDataTablePageWidget(),
+              builder: (context, params) => TestDataTablePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
