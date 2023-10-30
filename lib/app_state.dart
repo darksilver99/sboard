@@ -17,17 +17,25 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _selectedMenu = prefs.getString('ff_selectedMenu') ?? _selectedMenu;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
 
-  String _selectedMenu = 'dashBoard';
+  late SharedPreferences prefs;
+
+  String _selectedMenu = 'Dashboard';
   String get selectedMenu => _selectedMenu;
   set selectedMenu(String _value) {
     _selectedMenu = _value;
+    prefs.setString('ff_selectedMenu', _value);
   }
 }
 
