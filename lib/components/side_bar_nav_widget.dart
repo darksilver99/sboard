@@ -103,7 +103,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  FFAppState().selectedMenu = 'dashBoard';
+                  setState(() {
+                    FFAppState().selectedMenu = 'dashBoard';
+                  });
 
                   context.pushNamed('homePage');
                 },
@@ -148,7 +150,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  FFAppState().selectedMenu = 'coruses';
+                  setState(() {
+                    FFAppState().selectedMenu = 'courses';
+                  });
 
                   context.pushNamed('courses');
                 },
@@ -193,7 +197,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  FFAppState().selectedMenu = 'profile';
+                  setState(() {
+                    FFAppState().selectedMenu = 'profile';
+                  });
 
                   context.pushNamed('profilePage');
                 },
@@ -238,6 +244,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  FFAppState().update(() {
+                    FFAppState().selectedMenu = 'dashBoard';
+                  });
                   GoRouter.of(context).prepareAuthEvent();
                   await authManager.signOut();
                   GoRouter.of(context).clearRedirectLocation();
