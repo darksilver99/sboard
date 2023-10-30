@@ -1,4 +1,5 @@
 import '/components/side_bar_nav_widget.dart';
+import '/components/theme_setting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -16,18 +17,22 @@ class TestDataTablePageModel extends FlutterFlowModel<TestDataTablePageWidget> {
   late SideBarNavModel sideBarNavModel1;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
+  // Model for themeSetting component.
+  late ThemeSettingModel themeSettingModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
+    themeSettingModel = createModel(context, () => ThemeSettingModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
     sideBarNavModel2.dispose();
+    themeSettingModel.dispose();
   }
 
   /// Action blocks are added here.
