@@ -1,5 +1,4 @@
 import '/components/side_bar_nav_widget.dart';
-import '/components/theme_setting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -132,17 +131,6 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                         ),
                       ],
                     ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      wrapWithModel(
-                        model: _model.themeSettingModel,
-                        updateCallback: () => setState(() {}),
-                        child: ThemeSettingWidget(),
-                      ),
-                    ],
-                  ),
                   Expanded(
                     child: Align(
                       alignment: AlignmentDirectional(0.00, 0.00),
