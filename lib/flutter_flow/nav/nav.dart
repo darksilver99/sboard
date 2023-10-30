@@ -93,33 +93,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignInWidget(),
             ),
             FFRoute(
-              name: 'signUp',
-              path: 'signUp',
-              builder: (context, params) => SignUpWidget(),
-            ),
-            FFRoute(
-              name: 'createProfile',
-              path: 'createProfile',
-              requireAuth: true,
-              builder: (context, params) => CreateProfileWidget(),
-            ),
-            FFRoute(
-              name: 'phoneSignIn',
-              path: 'phoneSignIn',
-              builder: (context, params) => PhoneSignInWidget(),
-            ),
-            FFRoute(
-              name: 'forgotPassword',
-              path: 'forgotPassword',
-              requireAuth: true,
-              builder: (context, params) => ForgotPasswordWidget(),
-            ),
-            FFRoute(
-              name: 'phoneVerify',
-              path: 'phoneVerify',
-              builder: (context, params) => PhoneVerifyWidget(),
-            ),
-            FFRoute(
               name: 'homePage',
               path: 'homePage',
               requireAuth: true,

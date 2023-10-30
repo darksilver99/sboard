@@ -1,12 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sign_in_model.dart';
@@ -28,6 +26,16 @@ class _SignInWidgetState extends State<SignInWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SignInModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.emailAddressController?.text = 'darksilver99@hotmail.com';
+      });
+      setState(() {
+        _model.passwordController?.text = '04560456';
+      });
+    });
 
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
@@ -302,27 +310,30 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  FFButtonWidget(
-                                    onPressed: () {
-                                      print(
-                                          'Button-ForgotPassword pressed ...');
-                                    },
-                                    text: 'Forgot Password?',
-                                    options: FFButtonOptions(
-                                      width: 170.0,
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x00FFFFFF),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall,
-                                      elevation: 0.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                  Opacity(
+                                    opacity: 0.0,
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        print(
+                                            'Button-ForgotPassword pressed ...');
+                                      },
+                                      text: 'Forgot Password?',
+                                      options: FFButtonOptions(
+                                        width: 170.0,
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0x00FFFFFF),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodySmall,
+                                        elevation: 0.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -391,203 +402,6 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   ),
                                 ],
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 24.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AutoSizeText(
-                                    'Use a social platform to continue',
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodySmall,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 8.0, 8.0, 8.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    borderRadius: 12.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 44.0,
-                                    icon: FaIcon(
-                                      FontAwesomeIcons.google,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 16.0,
-                                    ),
-                                    onPressed: () async {
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      final user = await authManager
-                                          .signInWithGoogle(context);
-                                      if (user == null) {
-                                        return;
-                                      }
-
-                                      context.goNamedAuth(
-                                          'homePage', context.mounted);
-                                    },
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 8.0, 8.0, 8.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    borderRadius: 12.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 44.0,
-                                    icon: FaIcon(
-                                      FontAwesomeIcons.apple,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 16.0,
-                                    ),
-                                    onPressed: () async {
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      final user = await authManager
-                                          .signInWithApple(context);
-                                      if (user == null) {
-                                        return;
-                                      }
-
-                                      context.goNamedAuth(
-                                          'homePage', context.mounted);
-                                    },
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 8.0, 8.0, 8.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    borderRadius: 12.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 44.0,
-                                    icon: Icon(
-                                      Icons.phone_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 20.0,
-                                    ),
-                                    onPressed: () async {
-                                      context.pushNamed('phoneSignIn');
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 24.0, 0.0, 24.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'signUp',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.leftToRight,
-                                        duration: Duration(milliseconds: 400),
-                                      ),
-                                    },
-                                  );
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: Text(
-                                        'Don\'t have an account?',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 8.0, 0.0, 8.0),
-                                      child: Text(
-                                        'Create Account',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final user = await authManager
-                                        .signInAnonymously(context);
-                                    if (user == null) {
-                                      return;
-                                    }
-
-                                    context.goNamedAuth(
-                                        'homePage', context.mounted);
-                                  },
-                                  text: 'Continue as Guest',
-                                  options: FFButtonOptions(
-                                    width: 270.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium,
-                                    elevation: 0.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(50.0),
-                                  ),
-                                ),
-                              ],
                             ),
                           ],
                         ),
