@@ -213,8 +213,21 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                 ),
                                               ),
                                               FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
+                                                onPressed: () async {
+                                                  context.pushNamed(
+                                                    'testDataFormPage',
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
+                                                  );
                                                 },
                                                 text: 'Add Course',
                                                 icon: Icon(
