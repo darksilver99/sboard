@@ -29,7 +29,7 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   //List<String> needleKey = ["subject", "detail"];
-  List<String> needleKey = ["subject","subject2"];
+  List<String> needleKey = [];
 
   @override
   void initState() {
