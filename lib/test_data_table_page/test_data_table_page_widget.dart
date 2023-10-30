@@ -277,11 +277,24 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                       ),
                                     ),
                                     Expanded(
-                                      child: ListView(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        children: [],
+                                      child: SelectionArea(
+                                        child: SingleChildScrollView(
+                                          child: Container(
+                                            width: double.infinity,
+                                            child: PaginatedDataTable(
+                                              rowsPerPage: _rowsPerPage,
+                                              availableRowsPerPage: [10, 20, 50],
+                                              onRowsPerPageChanged: (value) {
+                                                setState(() {
+                                                  _rowsPerPage = value!;
+                                                });
+                                              },
+                                              sortAscending: _sortAscending,
+                                              columns: getHeader(_model.dataList, needleKey),
+                                              source: MyTableDataSource(getBody(_model.dataList, needleKey)),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ],
