@@ -97,6 +97,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        drawer: Drawer(
+          elevation: 16.0,
+          child: wrapWithModel(
+            model: _model.sideBarNavModel1,
+            updateCallback: () => setState(() {}),
+            child: SideBarNavWidget(),
+          ),
+        ),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -107,7 +115,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
               tablet: false,
             ))
               wrapWithModel(
-                model: _model.sideBarNavModel,
+                model: _model.sideBarNavModel2,
                 updateCallback: () => setState(() {}),
                 child: SideBarNavWidget(),
               ),
@@ -121,17 +129,47 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                     tabletLandscape: false,
                     desktop: false,
                   ))
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Container(
-                        width: double.infinity,
-                        height: 44.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.circular(0.0),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              scaffoldKey.currentState!.openDrawer();
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 3.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 8.0, 8.0, 8.0),
+                                  child: Icon(
+                                    Icons.dehaze,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                      ),
+                      ],
                     ),
                   Align(
                     alignment: AlignmentDirectional(0.00, 0.00),
