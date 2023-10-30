@@ -35,6 +35,7 @@ class _SignInWidgetState extends State<SignInWidget> {
       setState(() {
         _model.passwordController?.text = '04560456';
       });
+      setDarkModeSetting(context, ThemeMode.light);
     });
 
     _model.emailAddressController ??= TextEditingController();
