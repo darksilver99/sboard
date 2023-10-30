@@ -1,5 +1,6 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:s_board/utils/custom_toon.dart';
+import 'package:s_board/utils/data_sources.dart';
 
 import '/components/loading_view_widget.dart';
 import '/components/mobile_nav_view_widget.dart';
@@ -30,6 +31,9 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
 
   //List<String> needleKey = ["subject", "detail"];
   List<String> needleKey = [];
+
+  int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
+  bool _sortAscending = true;
 
   @override
   void initState() {
@@ -222,12 +226,29 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                       ),
                                       Expanded(
                                         child: SelectionArea(
-                                          child: DataTable2(
+                                          /*child: DataTable2(
                                             columnSpacing: 12,
                                             horizontalMargin: 12,
                                             minWidth: 600,
                                             columns: getHeader(_model.dataList, needleKey),
                                             rows: getBody(_model.dataList, needleKey),
+                                          ),*/
+                                          child: SingleChildScrollView(
+                                            child: Container(
+                                              width: double.infinity,
+                                              child: PaginatedDataTable(
+                                                rowsPerPage: _rowsPerPage,
+                                                availableRowsPerPage: [10, 20, 50],
+                                                onRowsPerPageChanged: (value) {
+                                                  setState(() {
+                                                    _rowsPerPage = value!;
+                                                  });
+                                                },
+                                                sortAscending: _sortAscending,
+                                                columns: getHeader(_model.dataList, needleKey),
+                                                source: MyTableDataSource(getBody(_model.dataList, needleKey)),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
