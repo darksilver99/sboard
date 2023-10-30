@@ -49,7 +49,7 @@ class _LoadingViewWidgetState extends State<LoadingViewWidget> {
         'assets/lottie_animations/animation_loceyd8l.json',
         width: MediaQuery.sizeOf(context).width * 1.0,
         height: 130.0,
-        fit: BoxFit.cover,
+        fit: BoxFit.contain,
         animate: true,
       ),
     );
