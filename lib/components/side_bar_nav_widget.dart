@@ -151,6 +151,53 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   setState(() {
+                    FFAppState().selectedMenu = 'Profile';
+                  });
+
+                  context.pushNamed('profilePage');
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color: FFAppState().selectedMenu == 'Profile'
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 12.0, 0.0),
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                        Text(
+                          'Profile',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  setState(() {
                     FFAppState().selectedMenu = 'Courses';
                   });
 
@@ -198,16 +245,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   setState(() {
-                    FFAppState().selectedMenu = 'Profile';
+                    FFAppState().selectedMenu = 'TestDataTable';
                   });
 
-                  context.pushNamed('profilePage');
+                  context.pushNamed('testDataTablePage');
                 },
                 child: Container(
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: FFAppState().selectedMenu == 'Profile'
+                    color: FFAppState().selectedMenu == 'Courses'
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
@@ -221,13 +268,13 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
                           child: Icon(
-                            Icons.account_circle_outlined,
+                            Icons.text_fields,
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24.0,
                           ),
                         ),
                         Text(
-                          'Profile',
+                          'TestDataTable',
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ],

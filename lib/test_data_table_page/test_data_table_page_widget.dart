@@ -1,7 +1,9 @@
+import '/backend/backend.dart';
 import '/components/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -93,30 +95,30 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                         alignment: AlignmentDirectional(0.00, 0.00),
                       ),
                     ),
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 32.0, 16.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 4.0,
-                              color: Color(0x33000000),
-                              offset: Offset(0.0, 2.0),
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        alignment: AlignmentDirectional(0.00, -1.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 16.0),
-                          child: SingleChildScrollView(
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 32.0, 16.0, 16.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x33000000),
+                                offset: Offset(0.0, 2.0),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          alignment: AlignmentDirectional(0.00, -1.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 16.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,7 +166,7 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Your Courses',
+                                                    FFAppState().selectedMenu,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .headlineSmall,
@@ -235,13 +237,163 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Your Top Classes',
-                                    style:
-                                        FlutterFlowTheme.of(context).titleSmall,
+                                Expanded(
+                                  child: StreamBuilder<List<UsersRecord>>(
+                                    stream: queryUsersRecord(
+                                      queryBuilder: (usersRecord) =>
+                                          usersRecord.orderBy('created_time',
+                                              descending: true),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<UsersRecord>
+                                          dataTableUsersRecordList =
+                                          snapshot.data!;
+                                      return SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Container(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  1.0,
+                                          child: DataTable2(
+                                            columns: [
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    'No.',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  )),
+                                                ),
+                                                fixedWidth: 100.0,
+                                              ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    'Email',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  )),
+                                                ),
+                                                fixedWidth: 200.0,
+                                              ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    'Display name',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  )),
+                                                ),
+                                                fixedWidth: 200.0,
+                                              ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: SelectionArea(
+                                                      child: Text(
+                                                    'Create date',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  )),
+                                                ),
+                                              ),
+                                            ],
+                                            rows: dataTableUsersRecordList
+                                                .mapIndexed((dataTableIndex,
+                                                        dataTableUsersRecord) =>
+                                                    [
+                                                      SelectionArea(
+                                                          child: Text(
+                                                        dataTableIndex
+                                                            .toString(),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      )),
+                                                      SelectionArea(
+                                                          child: Text(
+                                                        dataTableUsersRecord
+                                                            .email,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      )),
+                                                      SelectionArea(
+                                                          child: Text(
+                                                        dataTableUsersRecord
+                                                            .displayName,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      )),
+                                                      SelectionArea(
+                                                          child: Text(
+                                                        dateTimeFormat(
+                                                            'd/M/y',
+                                                            dataTableUsersRecord
+                                                                .createdTime!),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      )),
+                                                    ]
+                                                        .map((c) => DataCell(c))
+                                                        .toList())
+                                                .map((e) => DataRow(cells: e))
+                                                .toList(),
+                                            headingRowColor:
+                                                MaterialStateProperty.all(
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
+                                            ),
+                                            headingRowHeight: 56.0,
+                                            dataRowColor:
+                                                MaterialStateProperty.all(
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            dataRowHeight: 56.0,
+                                            border: TableBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                            dividerThickness: 1.0,
+                                            showBottomBorder: true,
+                                            minWidth: 49.0,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ],
