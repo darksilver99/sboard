@@ -190,16 +190,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed(
-                    'profilePage',
-                    extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                      ),
-                    },
-                  );
+                  context.pushNamed('profilePage');
                 },
                 child: Container(
                   width: double.infinity,
