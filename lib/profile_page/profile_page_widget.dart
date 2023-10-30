@@ -202,7 +202,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Profile',
+                                                  FFAppState().selectedMenu,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .headlineSmall,

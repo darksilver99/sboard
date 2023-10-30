@@ -104,7 +104,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   setState(() {
-                    FFAppState().selectedMenu = 'dashBoard';
+                    FFAppState().selectedMenu = 'Dashboard';
                   });
 
                   context.pushNamed('homePage');
@@ -113,9 +113,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: FFAppState().selectedMenu == 'dashBoard'
-                        ? FlutterFlowTheme.of(context).secondaryBackground
-                        : FlutterFlowTheme.of(context).primaryBackground,
+                    color: FFAppState().selectedMenu == 'Dashboard'
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -151,7 +151,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   setState(() {
-                    FFAppState().selectedMenu = 'courses';
+                    FFAppState().selectedMenu = 'Courses';
                   });
 
                   context.pushNamed('courses');
@@ -160,9 +160,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: FFAppState().selectedMenu == 'courses'
-                        ? FlutterFlowTheme.of(context).secondaryBackground
-                        : FlutterFlowTheme.of(context).primaryBackground,
+                    color: FFAppState().selectedMenu == 'Courses'
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -198,7 +198,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   setState(() {
-                    FFAppState().selectedMenu = 'profile';
+                    FFAppState().selectedMenu = 'Profile';
                   });
 
                   context.pushNamed('profilePage');
@@ -207,9 +207,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: FFAppState().selectedMenu == 'profile'
-                        ? FlutterFlowTheme.of(context).secondaryBackground
-                        : FlutterFlowTheme.of(context).primaryBackground,
+                    color: FFAppState().selectedMenu == 'Profile'
+                        ? FlutterFlowTheme.of(context).primaryBackground
+                        : FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -245,7 +245,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   FFAppState().update(() {
-                    FFAppState().selectedMenu = 'dashBoard';
+                    FFAppState().selectedMenu = 'Dashboard';
                   });
                   GoRouter.of(context).prepareAuthEvent();
                   await authManager.signOut();

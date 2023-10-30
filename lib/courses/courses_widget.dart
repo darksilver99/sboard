@@ -216,7 +216,7 @@ class _CoursesWidgetState extends State<CoursesWidget>
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Your Courses',
+                                                    FFAppState().selectedMenu,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .headlineSmall,
