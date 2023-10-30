@@ -35,7 +35,6 @@ class _SignInWidgetState extends State<SignInWidget> {
       setState(() {
         _model.passwordController?.text = '04560456';
       });
-      setDarkModeSetting(context, ThemeMode.light);
     });
 
     _model.emailAddressController ??= TextEditingController();
@@ -106,22 +105,12 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  if (Theme.of(context).brightness ==
-                                      Brightness.light)
-                                    Image.asset(
-                                      'assets/images/noCode_UI_onLight@3x.png',
-                                      width: 150.0,
-                                      height: 40.0,
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                  if (Theme.of(context).brightness ==
-                                      Brightness.dark)
-                                    Image.asset(
-                                      'assets/images/noCode_UI_onDark@3x.png',
-                                      width: 150.0,
-                                      height: 40.0,
-                                      fit: BoxFit.fitWidth,
-                                    ),
+                                  Image.asset(
+                                    'assets/images/noCode_UI_onLight@3x.png',
+                                    width: 150.0,
+                                    height: 40.0,
+                                    fit: BoxFit.fitWidth,
+                                  ),
                                 ],
                               ),
                             ),
