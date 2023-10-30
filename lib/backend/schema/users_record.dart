@@ -61,6 +61,11 @@ class UsersRecord extends FirestoreRecord {
   String get city => _city ?? '';
   bool hasCity() => _city != null;
 
+  // "status" field.
+  int? _status;
+  int get status => _status ?? 0;
+  bool hasStatus() => _status != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -71,6 +76,7 @@ class UsersRecord extends FirestoreRecord {
     _state = snapshotData['state'] as String?;
     _bio = snapshotData['bio'] as String?;
     _city = snapshotData['city'] as String?;
+    _status = castToType<int>(snapshotData['status']);
   }
 
   static CollectionReference get collection =>
@@ -116,6 +122,7 @@ Map<String, dynamic> createUsersRecordData({
   String? state,
   String? bio,
   String? city,
+  int? status,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +135,7 @@ Map<String, dynamic> createUsersRecordData({
       'state': state,
       'bio': bio,
       'city': city,
+      'status': status,
     }.withoutNulls,
   );
 
@@ -147,7 +155,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.state == e2?.state &&
         e1?.bio == e2?.bio &&
-        e1?.city == e2?.city;
+        e1?.city == e2?.city &&
+        e1?.status == e2?.status;
   }
 
   @override
@@ -160,7 +169,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.phoneNumber,
         e?.state,
         e?.bio,
-        e?.city
+        e?.city,
+        e?.status
       ]);
 
   @override
