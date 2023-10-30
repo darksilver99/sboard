@@ -98,11 +98,11 @@ class _ThemeSettingWidgetState extends State<ThemeSettingWidget>
               highlightColor: Colors.transparent,
               onTap: () async {
                 setDarkModeSetting(context, ThemeMode.dark);
-                if (animationsMap['containerOnActionTriggerAnimation2'] !=
+                if (animationsMap['containerOnActionTriggerAnimation1'] !=
                     null) {
-                  setState(() => hasContainerTriggered2 = true);
+                  setState(() => hasContainerTriggered1 = true);
                   SchedulerBinding.instance.addPostFrameCallback((_) async =>
-                      await animationsMap['containerOnActionTriggerAnimation2']!
+                      await animationsMap['containerOnActionTriggerAnimation1']!
                           .controller
                           .forward(from: 0.0));
                 }
@@ -176,11 +176,11 @@ class _ThemeSettingWidgetState extends State<ThemeSettingWidget>
               highlightColor: Colors.transparent,
               onTap: () async {
                 setDarkModeSetting(context, ThemeMode.light);
-                if (animationsMap['containerOnActionTriggerAnimation1'] !=
+                if (animationsMap['containerOnActionTriggerAnimation2'] !=
                     null) {
-                  setState(() => hasContainerTriggered1 = true);
+                  setState(() => hasContainerTriggered2 = true);
                   SchedulerBinding.instance.addPostFrameCallback((_) async =>
-                      await animationsMap['containerOnActionTriggerAnimation1']!
+                      await animationsMap['containerOnActionTriggerAnimation2']!
                           .controller
                           .forward(from: 0.0));
                 }
