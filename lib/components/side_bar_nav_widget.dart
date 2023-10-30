@@ -110,28 +110,37 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-              child: Container(
-                width: double.infinity,
-                height: 48.0,
-                decoration: BoxDecoration(
-                  color: widget.oneBG,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                        child: widget.oneIcon!,
-                      ),
-                      Text(
-                        'Dashboard',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                    ],
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('homePage');
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color: widget.oneBG,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 12.0, 0.0),
+                          child: widget.oneIcon!,
+                        ),
+                        Text(
+                          'Dashboard',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -237,7 +246,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.threeColor,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
