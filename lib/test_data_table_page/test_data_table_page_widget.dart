@@ -106,30 +106,29 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                     child: MobileNavViewWidget(),
                   ),
                   Expanded(
-                    child: Stack(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 32.0, 16.0, 16.0),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 4.0,
-                                    color: Color(0x33000000),
-                                    offset: Offset(0.0, 2.0),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              alignment: AlignmentDirectional(0.00, -1.00),
-                              child: Padding(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 32.0, 16.0, 16.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x33000000),
+                                offset: Offset(0.0, 2.0),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          alignment: AlignmentDirectional(0.00, -1.00),
+                          child: Stack(
+                            children: [
+                              Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 16.0),
                                 child: Column(
@@ -278,16 +277,16 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                   ],
                                 ),
                               ),
-                            ),
+                              if (_model.isLoading)
+                                wrapWithModel(
+                                  model: _model.loadingViewModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: LoadingViewWidget(),
+                                ),
+                            ],
                           ),
                         ),
-                        if (_model.isLoading)
-                          wrapWithModel(
-                            model: _model.loadingViewModel,
-                            updateCallback: () => setState(() {}),
-                            child: LoadingViewWidget(),
-                          ),
-                      ],
+                      ),
                     ),
                   ),
                 ],

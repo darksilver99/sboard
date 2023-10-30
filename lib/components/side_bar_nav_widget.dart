@@ -283,9 +283,6 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  FFAppState().update(() {
-                    FFAppState().selectedMenu = 'Dashboard';
-                  });
                   GoRouter.of(context).prepareAuthEvent();
                   await authManager.signOut();
                   GoRouter.of(context).clearRedirectLocation();

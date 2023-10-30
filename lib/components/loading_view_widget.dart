@@ -43,12 +43,15 @@ class _LoadingViewWidgetState extends State<LoadingViewWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Lottie.asset(
-      'assets/lottie_animations/animation_loceyd8l.json',
-      width: 150.0,
-      height: 130.0,
-      fit: BoxFit.cover,
-      animate: true,
+    return Align(
+      alignment: AlignmentDirectional(0.00, 0.00),
+      child: Lottie.asset(
+        'assets/lottie_animations/animation_loceyd8l.json',
+        width: 150.0,
+        height: 130.0,
+        fit: BoxFit.cover,
+        animate: true,
+      ),
     );
   }
 }
