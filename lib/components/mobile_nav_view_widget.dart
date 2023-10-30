@@ -78,7 +78,7 @@ class _MobileNavViewWidgetState extends State<MobileNavViewWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                       child: Icon(
-                        Icons.dehaze,
+                        Icons.menu_rounded,
                         color: FlutterFlowTheme.of(context).secondaryText,
                         size: 32.0,
                       ),
