@@ -296,13 +296,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: Color(0xFF121926),
-                  child: Image.asset(
-                    'assets/images/splash_dashboard_02@3x.png',
-                    fit: BoxFit.fitHeight,
-                  ),
-                )
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: Color(0xFF121926),
+                      child: Image.asset(
+                        'assets/images/splash_dashboard_02@3x.png',
+                        fit: BoxFit.fitHeight,
+                      ),
+                    )
               : page;
 
           final transitionInfo = state.transitionInfo;
