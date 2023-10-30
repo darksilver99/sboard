@@ -88,6 +88,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
       );
     }
 
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -107,23 +109,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
               wrapWithModel(
                 model: _model.sideBarNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideBarNavWidget(
-                  oneBG: FlutterFlowTheme.of(context).secondaryBackground,
-                  oneIcon: Icon(
-                    Icons.bar_chart_rounded,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                  twoBG: FlutterFlowTheme.of(context).secondaryBackground,
-                  twoIcon: Icon(
-                    Icons.school_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                  threeColor: FlutterFlowTheme.of(context).primaryBackground,
-                  threeIcon: Icon(
-                    Icons.account_circle_outlined,
-                    color: FlutterFlowTheme.of(context).primary,
-                  ),
-                ),
+                child: SideBarNavWidget(),
               ),
             Expanded(
               child: Column(

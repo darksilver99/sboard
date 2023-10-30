@@ -9,22 +9,7 @@ import 'side_bar_nav_model.dart';
 export 'side_bar_nav_model.dart';
 
 class SideBarNavWidget extends StatefulWidget {
-  const SideBarNavWidget({
-    Key? key,
-    this.oneBG,
-    this.oneIcon,
-    this.twoBG,
-    this.twoIcon,
-    this.threeColor,
-    this.threeIcon,
-  }) : super(key: key);
-
-  final Color? oneBG;
-  final Widget? oneIcon;
-  final Color? twoBG;
-  final Widget? twoIcon;
-  final Color? threeColor;
-  final Widget? threeIcon;
+  const SideBarNavWidget({Key? key}) : super(key: key);
 
   @override
   _SideBarNavWidgetState createState() => _SideBarNavWidgetState();
@@ -56,6 +41,8 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: 230.0,
       height: double.infinity,
@@ -116,13 +103,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  FFAppState().selectedMenu = 'dashBoard';
+
                   context.pushNamed('homePage');
                 },
                 child: Container(
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.oneBG,
+                    color: FFAppState().selectedMenu == 'dashBoard'
+                        ? FlutterFlowTheme.of(context).secondaryBackground
+                        : FlutterFlowTheme.of(context).primaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -133,7 +124,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
-                          child: widget.oneIcon!,
+                          child: Icon(
+                            Icons.bar_chart_rounded,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
                         ),
                         Text(
                           'Dashboard',
@@ -153,13 +148,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  FFAppState().selectedMenu = 'coruses';
+
                   context.pushNamed('courses');
                 },
                 child: Container(
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.twoBG,
+                    color: FFAppState().selectedMenu == 'courses'
+                        ? FlutterFlowTheme.of(context).secondaryBackground
+                        : FlutterFlowTheme.of(context).primaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -170,7 +169,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
-                          child: widget.twoIcon!,
+                          child: Icon(
+                            Icons.school_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
                         ),
                         Text(
                           'Courses',
@@ -190,13 +193,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  FFAppState().selectedMenu = 'profile';
+
                   context.pushNamed('profilePage');
                 },
                 child: Container(
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.threeColor,
+                    color: FFAppState().selectedMenu == 'profile'
+                        ? FlutterFlowTheme.of(context).secondaryBackground
+                        : FlutterFlowTheme.of(context).primaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -207,7 +214,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 12.0, 0.0),
-                          child: widget.threeIcon!,
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
                         ),
                         Text(
                           'Profile',
