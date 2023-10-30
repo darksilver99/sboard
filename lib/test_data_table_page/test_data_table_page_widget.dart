@@ -369,7 +369,8 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                       )),
                                                       Text(
                                                         dataTableUsersRecord
-                                                            .state,
+                                                            .status
+                                                            .toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
