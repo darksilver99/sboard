@@ -314,6 +314,18 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                               DataColumn2(
                                                 label: DefaultTextStyle.merge(
                                                   softWrap: true,
+                                                  child: Text(
+                                                    'Status',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  ),
+                                                ),
+                                                fixedWidth: 200.0,
+                                              ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
                                                   child: SelectionArea(
                                                       child: Text(
                                                     'Create date',
@@ -355,6 +367,14 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                                     context)
                                                                 .bodyMedium,
                                                       )),
+                                                      Text(
+                                                        dataTableUsersRecord
+                                                            .state,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
                                                       SelectionArea(
                                                           child: Text(
                                                         dateTimeFormat(

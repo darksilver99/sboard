@@ -254,7 +254,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: FFAppState().selectedMenu == 'Courses'
+                    color: FFAppState().selectedMenu == 'TestDataTable'
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
