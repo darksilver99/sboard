@@ -47,7 +47,7 @@ class _LoadingViewWidgetState extends State<LoadingViewWidget> {
       alignment: AlignmentDirectional(0.00, 0.00),
       child: Lottie.asset(
         'assets/lottie_animations/animation_loceyd8l.json',
-        width: 150.0,
+        width: MediaQuery.sizeOf(context).width * 1.0,
         height: 130.0,
         fit: BoxFit.cover,
         animate: true,
