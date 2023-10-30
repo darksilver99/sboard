@@ -333,6 +333,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      FFAppState().selectedMenu = 'Dashboard';
                                       GoRouter.of(context).prepareAuthEvent();
 
                                       final user =
