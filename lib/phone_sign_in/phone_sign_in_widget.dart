@@ -84,6 +84,8 @@ class _PhoneSignInWidgetState extends State<PhoneSignInWidget>
       );
     }
 
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,

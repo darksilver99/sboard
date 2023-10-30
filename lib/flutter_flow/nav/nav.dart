@@ -142,6 +142,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'profilePage')
                   : ProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'testDataTablePage',
+              path: 'testDataTablePage',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'testDataTablePage')
+                  : TestDataTablePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
