@@ -1,4 +1,5 @@
 import '/components/side_bar_nav_widget.dart';
+import '/components/theme_setting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -131,6 +132,17 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                         ),
                       ],
                     ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      wrapWithModel(
+                        model: _model.themeSettingModel,
+                        updateCallback: () => setState(() {}),
+                        child: ThemeSettingWidget(),
+                      ),
+                    ],
+                  ),
                   Expanded(
                     child: Align(
                       alignment: AlignmentDirectional(0.00, 0.00),
@@ -201,24 +213,26 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  SelectionArea(
+                                                      child: Text(
                                                     FFAppState().selectedMenu,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .headlineSmall,
-                                                  ),
+                                                  )),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
-                                                    child: Text(
+                                                    child: SelectionArea(
+                                                        child: Text(
                                                       'Below you will find a summary of your courses.',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .bodySmall,
-                                                    ),
+                                                    )),
                                                   ),
                                                 ],
                                               ),
@@ -271,6 +285,14 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                         ],
                                       ),
                                     ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: ListView(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    children: [],
                                   ),
                                 ),
                               ],

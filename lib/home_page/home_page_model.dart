@@ -1,15 +1,12 @@
 import '/components/side_bar_nav_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
+import '/components/theme_setting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
@@ -20,18 +17,22 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   late SideBarNavModel sideBarNavModel1;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
+  // Model for themeSetting component.
+  late ThemeSettingModel themeSettingModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
+    themeSettingModel = createModel(context, () => ThemeSettingModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
     sideBarNavModel2.dispose();
+    themeSettingModel.dispose();
   }
 
   /// Action blocks are added here.
