@@ -1,3 +1,4 @@
+import '/components/mobile_nav_view_widget.dart';
 import '/components/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -16,18 +17,22 @@ class CoursesModel extends FlutterFlowModel<CoursesWidget> {
   late SideBarNavModel sideBarNavModel1;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
+  // Model for mobileNavView component.
+  late MobileNavViewModel mobileNavViewModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
+    mobileNavViewModel = createModel(context, () => MobileNavViewModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
     sideBarNavModel2.dispose();
+    mobileNavViewModel.dispose();
   }
 
   /// Action blocks are added here.
