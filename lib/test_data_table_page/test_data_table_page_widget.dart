@@ -359,6 +359,7 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                           ),
                                         ),
                                       ),
+                                      if (_model.dataList.length > 0)
                                       Expanded(
                                         child: SelectionArea(
                                           child: SingleChildScrollView(
