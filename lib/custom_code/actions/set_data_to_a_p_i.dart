@@ -18,17 +18,23 @@ Future setDataToAPI(
   String? id,
 ) async {
   // Add your function code here!
+  var func = "insertData";
+  if (id != null) {
+    func = "updateData";
+  }
+  var url = Uri.https('www.silver-api.com', 'webboard/App_api_v1/$func');
 
-  var url = Uri.https('www.silver-api.com', 'webboard/App_api_v1/insertData');
   var tmpImage = "";
-  if(imageList!.isNotEmpty){
+  if (imageList!.isNotEmpty) {
     tmpImage = imageList.join(", ");
   }
   var data = {
     "subject": subject,
     "detail": detail,
     "image": tmpImage,
+    "id": id??'',
   };
+
   var response = await http.post(url, body: data);
   if (response.statusCode == 200) {
     var jsonResponse = convert.jsonDecode(response.body);
