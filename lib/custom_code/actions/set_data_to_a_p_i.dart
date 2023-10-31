@@ -19,9 +19,14 @@ Future setDataToAPI(
   // Add your function code here!
 
   var url = Uri.https('www.silver-api.com', 'webboard/App_api_v1/insertData');
+  var tmpImage = "";
+  if(imageList!.isNotEmpty){
+    tmpImage = imageList.join(", ");
+  }
   var data = {
     "subject": subject,
     "detail": detail,
+    "image": tmpImage,
   };
   var response = await http.post(url, body: data);
   if (response.statusCode == 200) {
