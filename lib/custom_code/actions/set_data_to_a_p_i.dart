@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 Future setDataToAPI(
   String? subject,
   String? detail,
+  List<String>? imageList,
 ) async {
   // Add your function code here!
 }
