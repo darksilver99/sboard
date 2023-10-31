@@ -16,6 +16,14 @@ class AddDataFormViewModel extends FlutterFlowModel<AddDataFormViewWidget> {
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
+  String? _textController1Validator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
@@ -23,7 +31,9 @@ class AddDataFormViewModel extends FlutterFlowModel<AddDataFormViewWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    textController1Validator = _textController1Validator;
+  }
 
   void dispose() {
     textFieldFocusNode1?.dispose();
