@@ -37,6 +37,12 @@ class FFAppState extends ChangeNotifier {
     _selectedMenu = _value;
     prefs.setString('ff_selectedMenu', _value);
   }
+
+  bool _triggerFunc = true;
+  bool get triggerFunc => _triggerFunc;
+  set triggerFunc(bool _value) {
+    _triggerFunc = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
