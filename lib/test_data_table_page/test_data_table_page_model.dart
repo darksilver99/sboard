@@ -1,3 +1,4 @@
+import '/components/add_data_form_view_widget.dart';
 import '/components/loading_view_widget.dart';
 import '/components/mobile_nav_view_widget.dart';
 import '/components/side_bar_nav_widget.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'test_data_table_page_widget.dart' show TestDataTablePageWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -37,6 +39,10 @@ class TestDataTablePageModel extends FlutterFlowModel<TestDataTablePageWidget> {
   late SideBarNavModel sideBarNavModel2;
   // Model for mobileNavView component.
   late MobileNavViewModel mobileNavViewModel;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
+  bool? inserted;
+  // Stores action output result for [Custom Action - getDataFromAPI] action in Button widget.
+  List<dynamic>? rs2;
   // Model for loadingView component.
   late LoadingViewModel loadingViewModel;
 
