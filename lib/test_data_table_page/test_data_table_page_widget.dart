@@ -349,14 +349,15 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: ListView(
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          children: [],
+                                      if (_model.dataList.length > 0)
+                                        Expanded(
+                                          child: ListView(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            children: [],
+                                          ),
                                         ),
-                                      ),
                                     ],
                                   ),
                                 ),
