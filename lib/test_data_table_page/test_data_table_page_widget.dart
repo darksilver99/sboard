@@ -33,14 +33,16 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 2000));
-      _model.rs = await actions.getDataFromAPI(
-        'testList',
-      );
-      setState(() {
-        _model.dataList = _model.rs!.toList().cast<dynamic>();
-        _model.isLoading = false;
-      });
+      if (FFAppState().triggerFunc) {
+        _model.rs = await actions.getDataFromAPI(
+          'testList',
+        );
+        setState(() {
+          _model.dataList = _model.rs!.toList().cast<dynamic>();
+          _model.isLoading = false;
+        });
+        FFAppState().triggerFunc = false;
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

@@ -383,7 +383,7 @@ class _TestDataFormPageWidgetState extends State<TestDataFormPageWidget> {
                                                                 .secondaryBackground,
                                                             fontWeight:
                                                                 FontWeight.w600,
-                                                            fontSize: 36.0,
+                                                            fontSize: 24.0,
                                                           ),
                                                         ),
                                                         duration: Duration(
@@ -395,6 +395,10 @@ class _TestDataFormPageWidgetState extends State<TestDataFormPageWidget> {
                                                       ),
                                                     );
                                                     context.safePop();
+                                                    FFAppState().update(() {
+                                                      FFAppState().triggerFunc =
+                                                          true;
+                                                    });
                                                   },
                                                   text: 'Save',
                                                   options: FFButtonOptions(
