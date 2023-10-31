@@ -14,6 +14,7 @@ import 'dart:convert' as convert;
 Future setDataToAPI(
   String? subject,
   String? detail,
+  List<String>? imageList,
 ) async {
   // Add your function code here!
 
