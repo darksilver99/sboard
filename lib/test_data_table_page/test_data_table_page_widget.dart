@@ -1,4 +1,4 @@
-import '/components/add_data_form_view_widget.dart';
+import '/components/form_view_widget.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:s_board/utils/custom_toon.dart';
 import 'package:s_board/utils/data_sources.dart';
@@ -266,7 +266,7 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                                           context)
                                                                       .unfocus(),
                                                               child:
-                                                                  AddDataFormViewWidget(),
+                                                                  FormViewWidget(),
                                                             ),
                                                           );
                                                         },
