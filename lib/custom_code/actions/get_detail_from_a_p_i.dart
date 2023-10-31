@@ -7,11 +7,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future setDataToAPI(
-  String? subject,
-  String? detail,
-  List<String>? imageList,
-  String? id,
-) async {
+Future<dynamic> getDetailFromAPI(String? id) async {
   // Add your function code here!
+  return {};
 }

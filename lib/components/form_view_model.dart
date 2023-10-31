@@ -4,14 +4,15 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'add_data_form_view_widget.dart' show AddDataFormViewWidget;
+import 'form_view_widget.dart' show FormViewWidget;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class AddDataFormViewModel extends FlutterFlowModel<AddDataFormViewWidget> {
+class FormViewModel extends FlutterFlowModel<FormViewWidget> {
   ///  Local state fields for this component.
 
   List<String> imageList = [];
@@ -35,6 +36,8 @@ class AddDataFormViewModel extends FlutterFlowModel<AddDataFormViewWidget> {
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - getDetailFromAPI] action in formView widget.
+  dynamic? rsDetail;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;

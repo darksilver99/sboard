@@ -6,21 +6,27 @@ import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_data_form_view_model.dart';
-export 'add_data_form_view_model.dart';
+import 'form_view_model.dart';
+export 'form_view_model.dart';
 
-class AddDataFormViewWidget extends StatefulWidget {
-  const AddDataFormViewWidget({Key? key}) : super(key: key);
+class FormViewWidget extends StatefulWidget {
+  const FormViewWidget({
+    Key? key,
+    this.idParameter,
+  }) : super(key: key);
+
+  final String? idParameter;
 
   @override
-  _AddDataFormViewWidgetState createState() => _AddDataFormViewWidgetState();
+  _FormViewWidgetState createState() => _FormViewWidgetState();
 }
 
-class _AddDataFormViewWidgetState extends State<AddDataFormViewWidget> {
-  late AddDataFormViewModel _model;
+class _FormViewWidgetState extends State<FormViewWidget> {
+  late FormViewModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,7 +37,37 @@ class _AddDataFormViewWidgetState extends State<AddDataFormViewWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddDataFormViewModel());
+    _model = createModel(context, () => FormViewModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.idParameter != null && widget.idParameter != '') {
+        _model.rsDetail = await actions.getDetailFromAPI(
+          widget.idParameter,
+        );
+        setState(() {
+          _model.textController1?.text = getJsonField(
+            _model.rsDetail,
+            r'''$.subject''',
+          ).toString().toString();
+        });
+        setState(() {
+          _model.textController2?.text = getJsonField(
+            _model.rsDetail,
+            r'''$.detail''',
+          ).toString().toString();
+        });
+        setState(() {
+          _model.imageList = getJsonField(
+            _model.rsDetail,
+            r'''$.imageList''',
+            true,
+          )!
+              .toList()
+              .cast<String>();
+        });
+      }
+    });
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -269,6 +305,7 @@ class _AddDataFormViewWidgetState extends State<AddDataFormViewWidget> {
                                                 child: Image.network(
                                                   imageListViewItem,
                                                   width: 80.0,
+                                                  height: 80.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -435,6 +472,7 @@ class _AddDataFormViewWidgetState extends State<AddDataFormViewWidget> {
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
+                                      showLoadingIndicator: false,
                                     ),
                                   ),
                                 ],
@@ -496,6 +534,7 @@ class _AddDataFormViewWidgetState extends State<AddDataFormViewWidget> {
                                     _model.textController1.text,
                                     _model.textController2.text,
                                     _model.imageList.toList(),
+                                    widget.idParameter,
                                   );
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

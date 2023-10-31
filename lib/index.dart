@@ -5,3 +5,4 @@ export '/courses/courses_widget.dart' show CoursesWidget;
 export '/profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export '/test_data_table_page/test_data_table_page_widget.dart'
     show TestDataTablePageWidget;
+export '/test/test_widget.dart' show TestWidget;

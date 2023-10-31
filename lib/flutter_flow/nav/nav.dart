@@ -115,6 +115,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'testDataTablePage',
               requireAuth: true,
               builder: (context, params) => TestDataTablePageWidget(),
+            ),
+            FFRoute(
+              name: 'test',
+              path: 'test',
+              requireAuth: true,
+              builder: (context, params) => TestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
