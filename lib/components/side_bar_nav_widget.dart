@@ -99,7 +99,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     FFAppState().selectedMenu = 'Dashboard';
                   });
 
-                  context.pushNamed('homePage');
+                  context.pushNamed(
+                    'homePage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -146,7 +155,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     FFAppState().selectedMenu = 'Profile';
                   });
 
-                  context.pushNamed('profilePage');
+                  context.pushNamed(
+                    'profilePage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -193,7 +211,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     FFAppState().selectedMenu = 'Courses';
                   });
 
-                  context.pushNamed('courses');
+                  context.pushNamed(
+                    'courses',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -240,7 +267,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     FFAppState().selectedMenu = 'TestDataTable';
                   });
 
-                  context.pushNamed('testDataTablePage');
+                  context.pushNamed(
+                    'testDataTablePage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
