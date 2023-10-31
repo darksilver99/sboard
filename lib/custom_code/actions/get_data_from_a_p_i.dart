@@ -14,7 +14,7 @@ import 'dart:convert' as convert;
 Future<List<dynamic>> getDataFromAPI(String? functionName) async {
   // Add your function code here!
 
-  var url = Uri.https('www.silver-api.com', 'webboard/App_api_v1/webboardList');
+  var url = Uri.https('www.silver-api.com', 'webboard/App_api_v1/$functionName');
   var response = await http.get(url);
   if (response.statusCode == 200) {
     var jsonResponse = convert.jsonDecode(response.body);
