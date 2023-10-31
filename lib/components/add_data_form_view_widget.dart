@@ -286,12 +286,15 @@ class _AddDataFormViewWidgetState extends State<AddDataFormViewWidget> {
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
+                                                    setState(() {
+                                                      _model.removeFromImageList(
+                                                          imageListViewItem);
+                                                    });
                                                     await FirebaseStorage
                                                         .instance
                                                         .refFromURL(
                                                             imageListViewItem)
                                                         .delete();
-                                                    setState(() {});
                                                   },
                                                   child: Icon(
                                                     Icons.cancel_rounded,
