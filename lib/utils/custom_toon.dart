@@ -30,7 +30,7 @@ List<DataRow> getBody(List<dynamic> dataList, List<dynamic> needle) {
           DataCell(
             Text('${dataList[index][item] ?? '-'}'),
           ),
-      ],
+      ]
     ),
   );
 }
