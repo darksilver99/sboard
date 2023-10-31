@@ -1,3 +1,4 @@
+import '/components/add_data_form_view_widget.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:s_board/utils/custom_toon.dart';
 import 'package:s_board/utils/data_sources.dart';
@@ -9,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +23,8 @@ class TestDataTablePageWidget extends StatefulWidget {
   const TestDataTablePageWidget({Key? key}) : super(key: key);
 
   @override
-  _TestDataTablePageWidgetState createState() => _TestDataTablePageWidgetState();
+  _TestDataTablePageWidgetState createState() =>
+      _TestDataTablePageWidgetState();
 }
 
 class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
@@ -42,16 +45,14 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().triggerFunc) {
-        _model.rs = await actions.getDataFromAPI(
-          'testList',
-        );
-        setState(() {
-          _model.dataList = _model.rs!.toList().cast<dynamic>();
-          _model.isLoading = false;
-        });
-        FFAppState().triggerFunc = false;
-      }
+      await Future.delayed(const Duration(milliseconds: 1000));
+      _model.rs = await actions.getDataFromAPI(
+        'webboardList',
+      );
+      setState(() {
+        _model.dataList = _model.rs!.toList().cast<dynamic>();
+        _model.isLoading = false;
+      });
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -224,62 +225,114 @@ class _TestDataTablePageWidgetState extends State<TestDataTablePageWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              FFButtonWidget(
-                                                onPressed: () {
-                                                  context.pushNamed(
-                                                    'testDataFormPage',
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey: TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType: PageTransitionType.fade,
-                                                        duration: Duration(milliseconds: 0),
-                                                      ),
-                                                    },
-                                                  );
-                                                },
-                                                text: 'Add Course',
-                                                icon: Icon(
-                                                  Icons.add_rounded,
-                                                  size: 15.0,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  width: 150.0,
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
+                                              Builder(
+                                                builder: (context) =>
+                                                    FFButtonWidget(
+                                                  onPressed: () async {
+                                                    await showAlignedDialog(
+                                                      context: context,
+                                                      isGlobal: true,
+                                                      avoidOverflow: false,
+                                                      targetAnchor:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      followerAnchor:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      builder: (dialogContext) {
+                                                        return Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
                                                                         context)
-                                                                    .titleSmallFamily,
-                                                            color: Colors.white,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmallFamily),
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child:
+                                                                AddDataFormViewWidget(),
                                                           ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() =>
+                                                            _model.inserted =
+                                                                value));
+
+                                                    if (_model.inserted!) {
+                                                      _model.rs2 = await actions
+                                                          .getDataFromAPI(
+                                                        'webboardList',
+                                                      );
+                                                      setState(() {
+                                                        _model.dataList = _model
+                                                            .rs2!
+                                                            .toList()
+                                                            .cast<dynamic>();
+                                                        _model.isLoading =
+                                                            false;
+                                                      });
+                                                    }
+
+                                                    setState(() {});
+                                                  },
+                                                  text: 'Add Course',
+                                                  icon: Icon(
+                                                    Icons.add_rounded,
+                                                    size: 15.0,
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0),
+                                                  options: FFButtonOptions(
+                                                    width: 150.0,
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          color: Colors.white,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            50.0),
+                                                  ),
                                                 ),
                                               ),
                                             ],

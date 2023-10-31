@@ -395,10 +395,6 @@ class _TestDataFormPageWidgetState extends State<TestDataFormPageWidget> {
                                                       ),
                                                     );
                                                     context.safePop();
-                                                    FFAppState().update(() {
-                                                      FFAppState().triggerFunc =
-                                                          true;
-                                                    });
                                                   },
                                                   text: 'Save',
                                                   options: FFButtonOptions(
