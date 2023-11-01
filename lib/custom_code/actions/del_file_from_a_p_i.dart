@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future delFileFromAPI(String? uploadKey) async {
+Future delFileFromAPI(
+  String? uploadKey,
+  String? path,
+) async {
   // Add your function code here!
 }
