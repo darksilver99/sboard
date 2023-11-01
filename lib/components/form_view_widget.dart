@@ -371,6 +371,7 @@ class _FormViewWidgetState extends State<FormViewWidget> {
                                                           _model.rsDetail,
                                                           r'''$.uploadKey''',
                                                         ).toString(),
+                                                        imageListViewItem,
                                                       );
                                                     }
                                                     await FirebaseStorage
