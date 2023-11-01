@@ -113,6 +113,16 @@ class _TestWidgetState extends State<TestWidget> {
                   ),
                 ),
               ),
+              Text(
+                'Hello World',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                      color: FlutterFlowTheme.of(context).info,
+                      decoration: TextDecoration.underline,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).bodyMediumFamily),
+                    ),
+              ),
             ],
           ),
         ),

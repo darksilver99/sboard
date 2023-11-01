@@ -1,4 +1,5 @@
 import '/backend/firebase_storage/storage.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'form_view_model.dart';
 export 'form_view_model.dart';
@@ -299,14 +301,46 @@ class _FormViewWidgetState extends State<FormViewWidget> {
                                             alignment:
                                                 AlignmentDirectional(1.0, -1.0),
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(4.0),
-                                                child: Image.network(
-                                                  imageListViewItem,
-                                                  width: 80.0,
-                                                  height: 80.0,
-                                                  fit: BoxFit.cover,
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await Navigator.push(
+                                                    context,
+                                                    PageTransition(
+                                                      type: PageTransitionType
+                                                          .fade,
+                                                      child:
+                                                          FlutterFlowExpandedImageView(
+                                                        image: Image.network(
+                                                          imageListViewItem,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                        allowRotation: false,
+                                                        tag: imageListViewItem,
+                                                        useHeroAnimation: true,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Hero(
+                                                  tag: imageListViewItem,
+                                                  transitionOnUserGestures:
+                                                      true,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4.0),
+                                                    child: Image.network(
+                                                      imageListViewItem,
+                                                      width: 80.0,
+                                                      height: 80.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               Padding(
@@ -327,6 +361,18 @@ class _FormViewWidgetState extends State<FormViewWidget> {
                                                       _model.removeFromImageList(
                                                           imageListViewItem);
                                                     });
+                                                    if (widget.idParameter !=
+                                                            null &&
+                                                        widget.idParameter !=
+                                                            '') {
+                                                      await actions
+                                                          .delFileFromAPI(
+                                                        getJsonField(
+                                                          _model.rsDetail,
+                                                          r'''$.uploadKey''',
+                                                        ).toString(),
+                                                      );
+                                                    }
                                                     await FirebaseStorage
                                                         .instance
                                                         .refFromURL(
