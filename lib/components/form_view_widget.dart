@@ -469,7 +469,7 @@ class _FormViewWidgetState extends State<FormViewWidget> {
                                           while (
                                               _model.tmpImageList.length > 0) {
                                             _model.addToImageList(
-                                                _model.uploadedFileUrls.first);
+                                                _model.tmpImageList.first);
                                             _model
                                                 .removeAtIndexFromTmpImageList(
                                                     0);
